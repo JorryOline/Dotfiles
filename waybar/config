@@ -2,24 +2,20 @@
   "layer" : "top",
   "position" : "top",
   "modules-left" : [
-  "custom/launcher",
+    "custom/launcher",
     "hyprland/workspaces",
     "temperature",
     "memory",
     "cpu",
   ],
   "modules-center" : [
-//    "custom/launcher",
     "clock",
     "custom/weather"
   ],
   "modules-right" : [
- //   "custom/cava",
-//  "custom/wall",
-//    "mpd",
     "custom/cava",
-    "custom/playerctl",
-    "custom/playerlabel",
+    //"custom/playerctl",
+    //"custom/playerlabel",
     "custom/waylrc",
     //    "custom/cycle_wall",
     "pulseaudio",
@@ -139,6 +135,11 @@
     "smooth-scrolling-threshold" : 5,
     "tooltip-format" : "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})",
   },
+"custom/waylrc": {
+        "exec": "~/.local/bin/waylrc",
+        "return-type": "json",
+        "escape": false
+    },
 
 "custom/pacman": {
   "format": "{icon}{}",
@@ -248,8 +249,4 @@
 
 },
 
-"custom/waylrc": {
-        "exec": "~/.local/bin/waylrc",
-        "return-type": "json",
-        "escape": true
-    }
+
