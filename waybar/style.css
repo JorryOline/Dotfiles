@@ -214,6 +214,9 @@ tooltip label {
 #custom-music.Stopped {
   background: #161925;
 }
+#custom-waylrc {
+  font-family: "Maple Mono SC NF"
+}
 
 #custom-cycle_wall {
   background: rgb(245, 194, 231);

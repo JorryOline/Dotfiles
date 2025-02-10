@@ -13,23 +13,15 @@
     "custom/weather"
   ],
   "modules-right" : [
-    "custom/cava",
-    //"custom/playerctl",
-    //"custom/playerlabel",
     "custom/waylrc",
-    //    "custom/cycle_wall",
+    "custom/cava",
     "pulseaudio",
-//    "backlight",
-//    "network",
-//    "battery",
     "custom/wallchange"
   ],
   "custom/launcher": {
     "format": "",
     "on-click": "bash $HOME/.config/rofi/powermenu/powermenu.sh",
-//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
     "on-click-right": "bash $HOME/.config/rofi/run.sh"  
-//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
   },
   "custom/wall" : {
     "on-click" : "~/.config/hypr/scripts/waybar/cycle.sh",
@@ -226,7 +218,6 @@
     "custom/cycle_wall":{
         "format":"{}",
         "exec": "~/.config/hypr/scripts/tools/expand wall",
-        // "interval": 1,
         "on-click": "~/.config/hypr/scripts/tools/expand cycle"
     },
      "custom/wallchange": {
