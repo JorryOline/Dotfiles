@@ -49,7 +49,7 @@ return {
             level = "TRACE",
         })
         local getTime = os.date("%X");
-        local output = vim.fn.system("fortune |")
+        local output = vim.fn.system("fortune")
         vim.notify = notify
         notify(output, "info", {
           title = "每日箴言 🎲",
