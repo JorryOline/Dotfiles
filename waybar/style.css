@@ -1,0 +1,273 @@
+* {
+  font-family: "JetbrainsMonoNL Nerd Font Mono";
+  color: rgb(254,254,254);
+  font-size: 14pt;
+  font-weight: bold;
+  border-radius: 10px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+@keyframes blink_red {
+  to {
+    background-color: rgb(242, 143, 173);
+    color: rgb(26, 24, 38);
+  }
+}
+.warning,
+.critical,
+.urgent {
+  animation-name: blink_red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+window > box {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  background-color: rgb(30, 30, 46);
+}
+#workspaces {
+  padding-left: 0px;
+  padding-right: 4px;
+}
+#workspaces button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#workspaces button.active {
+  background-color: rgb(181, 232, 224);
+  color: rgb(26, 24, 38);
+}
+#workspaces button.urgent {
+  color: rgb(26, 24, 38);
+}
+#workspaces button:hover {
+  background-color: rgb(248, 189, 150);
+  color: rgb(26, 24, 38);
+}
+tooltip {
+  background: rgb(48, 45, 65);
+}
+tooltip label {
+  color: rgb(217, 224, 238);
+}
+/* #custom-launcher { */
+/*   font-size: 20px; */
+/*   padding-left: 8px; */
+/*   padding-right: 6px; */
+/*   color: #7ebae4; */
+/* } */
+#mode,
+#clock,
+#memory,
+#temperature,
+#cpu,
+#mpd,
+#custom-playerctl,
+#custom-wall,
+#temperature,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#custom-powermenu,
+#custom-wallchange,
+#custom-cava {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#mode {
+  margin-left: 10px;
+  background-color: rgb(248, 189, 150);
+  color: rgb(26, 24, 38);
+}
+#memory {
+  color: rgb(181, 232, 224);
+}
+#cpu {
+  color: rgb(245, 194, 231);
+}
+#clock {
+  color: rgb(217, 224, 238);
+}
+#idle_inhibitor {
+  color: rgb(221, 182, 242);
+}
+#custom-wall {
+  color: rgb(221, 182, 242);
+}
+#temperature {
+  color: rgb(150, 205, 251);
+}
+#backlight {
+  color: rgb(248, 189, 150);
+}
+#pulseaudio {
+  color: rgb(245, 224, 220);
+}
+#custom-cava {
+  color: #F7F7F7
+}
+#network {
+  color: #abe9b3;
+}
+#custom-launcher {
+  color: #e5809e;
+  padding: 0 12px 0 18px;
+  /*border-right: solid 1px #282738;*/
+  font-size: 24px;
+}
+#network.disconnected {
+  color: rgb(255, 255, 255);
+}
+#battery.charging,
+#battery.full,
+#battery.discharging {
+  color: rgb(250, 227, 176);
+}
+#battery.critical:not(.charging) {
+  color: rgb(242, 143, 173);
+}
+#custom-powermenu {
+  color: rgb(242, 143, 173);
+}
+#tray {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#mpd.paused {
+  color: #414868;
+  font-style: italic;
+}
+#mpd.stopped {
+  background: transparent;
+}
+#mpd {
+  color: #c0caf5;
+}
+#cava-internal {
+  font-family: "Hack Nerd Font";
+}
+
+#custom-playerctl {
+  background: transparent;
+  padding-left: 15px;
+  padding-right: 14px;
+  border-radius: 16px;
+  border-left: solid 1px #282738;
+  border-right: solid 1px #282738;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+}
+
+#custom-playerlabel {
+  background: transparent;
+  padding-left: 10px;
+  padding-right: 15px;
+  border-radius: 16px;
+  border-left: solid 1px #282738;
+  border-right: solid 1px #282738;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-style: normal;
+}
+#custom-music.Playing {
+  background: rgb(137, 180, 250);
+  background: radial-gradient(
+    circle,
+    rgba(137, 180, 250, 120) 0%,
+    rgba(142, 179, 250, 120) 6%,
+    rgba(148, 226, 213, 1) 14%,
+    rgba(147, 178, 250, 1) 14%,
+    rgba(155, 176, 249, 1) 18%,
+    rgba(245, 194, 231, 1) 28%,
+    rgba(158, 175, 249, 1) 28%,
+    rgba(181, 170, 248, 1) 58%,
+    rgba(205, 214, 244, 1) 69%,
+    rgba(186, 169, 248, 1) 69%,
+    rgba(195, 167, 247, 1) 72%,
+    rgba(137, 220, 235, 1) 73%,
+    rgba(198, 167, 247, 1) 78%,
+    rgba(203, 166, 247, 1) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient_f 9s cubic-bezier(0.72, 0.39, 0.21, 1) infinite;
+  /*text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);*/
+  font-weight: bold;
+  color: #fff;
+}
+
+#custom-music.Paused,
+#custom-music.Stopped {
+  background: #161925;
+}
+#custom-waylrc {
+  font-family: "Maple Mono SC NF"
+}
+
+#custom-cycle_wall {
+  background: rgb(245, 194, 231);
+  background: linear-gradient(
+    45deg,
+    rgba(245, 194, 231, 1) 0%,
+    rgba(203, 166, 247, 1) 0%,
+    rgba(243, 139, 168, 1) 13%,
+    rgba(235, 160, 172, 1) 26%,
+    rgba(250, 179, 135, 1) 34%,
+    rgba(249, 226, 175, 1) 49%,
+    rgba(166, 227, 161, 1) 65%,
+    rgba(148, 226, 213, 1) 77%,
+    rgba(137, 220, 235, 1) 82%,
+    rgba(116, 199, 236, 1) 88%,
+    rgba(137, 180, 250, 1) 95%
+  );
+  color: #fff;
+  background-size: 500% 500%;
+  animation: gradient 7s linear infinite;
+  font-weight: bolder;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+#custom-music.Playing {
+    background: rgb(137, 180, 250);
+    background: radial-gradient(circle, rgba(137, 180, 250, 120) 0%, rgba(142, 179, 250, 120) 6%, rgba(148, 226, 213, 1) 14%, rgba(147, 178, 250, 1) 14%, rgba(155, 176, 249, 1) 18%, rgba(245, 194, 231, 1) 28%, rgba(158, 175, 249, 1) 28%, rgba(181, 170, 248, 1) 58%, rgba(205, 214, 244, 1) 69%, rgba(186, 169, 248, 1) 69%, rgba(195, 167, 247, 1) 72%, rgba(137, 220, 235, 1) 73%, rgba(198, 167, 247, 1) 78%, rgba(203, 166, 247, 1) 100%);
+    background-size: 400% 400%;
+    animation: gradient_f 9s cubic-bezier(.72, .39, .21, 1) infinite;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
+    font-weight: bold;
+    color: #fff;
+}
+
+#custom-music.Paused,
+#custom-music.Stopped {
+    background: #161925;
+}
+@keyframes blink-update {
+	to {
+		background-color: dodgerblue;
+	}
+}
+
+#custom-pacman {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+#custom-pacman.pending-updates {
+	animation-name: blink-update;
+	animation-duration: 3s;
+}

@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+
+## Script To Manage Speaker Volume For Archcraft (in Wayland).
+
+iDIR="$HOME/.config/hypr/icons"
+
+# Get Volume
+get_volume() {
+	volume=$(amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[]')
+	echo "$volume"
+}
+
+# Get icons
+get_icon() {
+	vol="$(get_volume)"
+	current="${vol%%%}"
+	amixer get Master | grep '\[on\]' &>/dev/null
+	if [[ "$?" == 0 ]]; then
+		if [ "$current" -eq 0 ]; then
+			icon="$iDIR/volume_off.svg"
+		elif [ "$current" -lt 33 ]; then
+			icon="$iDIR/volume_low.svg"
+		elif [ "$current" -lt 66 ]; then
+			icon="$iDIR/volume_medium.svg"
+		else
+			icon="$iDIR/volume_high.svg"
+		fi
+	else
+		icon="$iDIR/volume_muted.svg"
+	fi
+}
+
+# Notify
+notify_user() {
+	amixer get Master | grep '\[on\]' &>/dev/null
+	if [[ "$?" == 0 ]]; then
+		dunstify -i "$icon" -u normal -h string:x-dunst-stack-tag:volume -a "Volume" "Volume at $(get_volume)" -h "int:value:$(get_volume)"
+	else
+		dunstify -i "$icon" -u normal -h string:x-dunst-stack-tag:volume-muted -a "Volume(muted)" "Volume at $(get_volume)" -h "int:value:$(get_volume)"
+	fi
+}
+
+# Increase Volume
+inc_volume() {
+	for i in $(seq "5"); do
+		amixer -Mq set Master,0 1%+ unmute && get_icon && notify_user
+		sleep 0.00001
+	done
+}
+
+# Decrease Volume
+dec_volume() {
+	for d in $(seq "5"); do
+		amixer -Mq set Master,0 1%- unmute && get_icon && notify_user
+		sleep 0.00001
+	done
+}
+
+# Toggle Mute
+toggle_mute() {
+	amixer set Master toggle && get_icon && notify_user
+}
+
+# Execute accordingly
+if [[ "$1" == "--get" ]]; then
+	get_volume
+elif [[ "$1" == "--inc" ]]; then
+	inc_volume
+elif [[ "$1" == "--dec" ]]; then
+	dec_volume
+elif [[ "$1" == "--toggle" ]]; then
+	toggle_mute
+else
+	get_volume
+fi

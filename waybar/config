@@ -1,0 +1,243 @@
+[{
+  "layer" : "top",
+  "position" : "top",
+  "modules-left" : [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "temperature",
+    "memory",
+    "cpu",
+  ],
+  "modules-center" : [
+    "clock",
+    "custom/weather"
+  ],
+  "modules-right" : [
+    "custom/waylrc",
+    "custom/cava",
+    "pulseaudio",
+    "custom/wallchange"
+  ],
+  "custom/launcher": {
+    "format": "",
+    "on-click": "bash $HOME/.config/rofi/powermenu/powermenu.sh",
+    "on-click-right": "bash $HOME/.config/rofi/run.sh"  
+  },
+  "custom/wall" : {
+    "on-click" : "~/.config/hypr/scripts/waybar/cycle.sh",
+    "format" : " 󰠖 ",
+    "tooltip" : false,
+  },
+  "custom/weather": {
+    "format": "{} °",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "./wttrbar",
+    "return-type": "json"
+},
+"custom/cava": {
+    "exec": "~/.config/waybar/caway/caway -f 240 -b 10",
+    "return-type": "json",
+    },
+  "hyprland/workspaces" : {
+    "format" : "{icon}",
+    "on-click" : "activate",
+    "on-scroll-up" : "hyprctl dispatch workspace e+1",
+    "on-scroll-down" : "hyprctl dispatch workspace e-1",
+    "format-icons": {
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+    "6": "6",
+    "7": "7",
+    }
+  },
+  "idle_inhibitor" : {
+    "format" : "{icon}",
+    "format-icons" : {
+    "activated" : "",
+    "deactivated" : "",
+    },
+    "tooltip" : false,
+  },
+  "backlight" : {
+    "device" : "intel_backlight",
+    "on-scroll-up" : "light -A 5",
+    "on-scroll-down" : "light -U 5",
+    "format" : "{icon} {percent}%",
+    "format-icons" : [ "󰃝", "󰃞", "󰃟", "󰃠", ],
+  },
+  "pulseaudio" : {
+    "scroll-step" : 1,
+    "format" : "{icon} {volume}%",
+    "format-muted" : "󰖁 Muted",
+    "format-icons" : {
+    "default" : [ "", "", "", ],
+    },
+    "on-click" : "pavucontrol",
+    "on-click-right" : "~/.config/hypr/scripts/control/volume --toggle",
+    "tooltip" : false,
+  },
+  "battery" : {
+    "interval" : 10,
+    "states" : {
+    "warning" : 20,
+    "critical" : 10,
+    },
+    "format" : "{icon} {capacity}%",
+    "format-icons" : [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹", ],
+    "format-full" : "{icon} {capacity}%",
+    "format-charging" : "󰂄 {capacity}%",
+    "tooltip" : false,
+  },
+  "clock" : {
+    "interval" : 1,
+    "on-click" : "~/.config/hypr/scripts/waybar/cycle.sh",
+    "format" : "<b>{:%m月%d日 %H:%M %A}</b>",
+    "tooltip" : true,
+    "tooltip-format" : "<big>{:%Y年%b%d日}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+  "memory" : {
+    "interval" : 1,
+    "format": "󰍛 {}%",
+    "format-alt": "󰍛 {used}/{total} GiB",
+   // "on-click" : "wezterm --config-file ~/.config/wezterm/float.lua start --class floatwezterm btm -e --default_widget_type proc",
+    "states" : {
+      "warning" : 85,
+    },
+  },
+  "cpu" : {
+    "interval" : 1,
+    "format": "󰻠 {usage}%",
+    "format-alt": "󰻠 {avg_frequency} GHz",
+   // "on-click" : "wezterm --config-file ~/.config/wezterm/float.lua start --class floatwezterm btm -e --default_widget_type cpu",
+ 
+  },
+  "mpd" : {
+    "max-length" : 25,
+  "format" : " {title}",
+    "format-paused" : " {title}",
+    "format-stopped" : "",
+    "format-disconnected" : "",
+    "on-click" : "wezterm --config-file ~/.config/wezterm/float.lua start --class floatwezterm ncmpcpp ",
+    "on-scroll-up" : "mpc --quiet prev",
+    "on-scroll-down" : "mpc --quiet next",
+    "smooth-scrolling-threshold" : 5,
+    "tooltip-format" : "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})",
+  },
+"custom/waylrc": {
+        "exec": "~/.local/bin/waylrc",
+        "return-type": "json",
+        "escape": false
+    },
+
+"custom/pacman": {
+  "format": "{icon}{}",
+  "return-type": "json",
+  "format-icons": {
+    "pending-updates": " ",
+    "updated": ""
+  },
+  "exec-if": "which waybar-updates",
+  "exec": "waybar-updates"
+},
+
+
+
+   "custom/playerctl": {
+      "format": "{icon}",
+      "return-type": "json",
+      "max-length": 64,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+      },
+      },
+    "custom/playerlabel": {
+      "format": "<span>{}</span>",
+
+      "return-type": "json",
+      "max-length": 48,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
+        "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
+      },
+    },      
+  "network" : {
+    "format-disconnected" : "󰯡 Disconnected",
+    "format-ethernet" : "󰀂 {ifname} ({ipaddr})",
+    "format-linked" : "󰖪 {essid} (No IP)",
+    "format-wifi" : "󰖩 {essid}",
+    "interval" : 1,
+    "on-click" : "wezterm --config-file ~/.config/wezterm/float.lua start --class floatwezterm btm -e --default_widget_type net",
+    "tooltip" : false,
+  },
+  "temperature" : {
+    "interval" : 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    //"on-click" : "wezterm --config-file ~/.config/wezterm/float.lua start --class floatwezterm btm -e --default_widget_type temp",
+    "tooltip" : true,
+    "format" : " {temperatureC}°C",
+  },
+  "custom/powermenu" : {
+    "format" : "",
+    "on-click" : "~/.config/hypr/scripts/rofi/powermenu",
+    "tooltip" : false,
+  },
+  "tray" : {
+    "icon-size" : 15,
+    "spacing" : 5,
+  },
+}],
+"custom/music": {
+    "format": "{icon}{}",
+    "format-icons": {
+        // "Playing": " ", // Uncomment if not using caway
+        "Paused": " ",
+        "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
+    },
+    "escape": true,
+    "tooltip": true,
+    "exec": "~/.config/waybar/caway/caway",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "on-click-right": "g4music",
+    "max-length": 35
+}
+    "custom/cycle_wall":{
+        "format":"{}",
+        "exec": "~/.config/hypr/scripts/tools/expand wall",
+        "on-click": "~/.config/hypr/scripts/tools/expand cycle"
+    },
+     "custom/wallchange": {
+        "format": " {}",
+        "exec": "~/chwp"
+        "on-click": "~/chwp"
+    },
+
+    "custom/music": {
+    "format": "{icon}{}",
+    "format-icons": {
+        // "Playing": " ", // Uncomment if not using caway
+        "Paused": " ",
+        "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
+    },
+    "escape": true,
+    "tooltip": true,
+    "exec": "~/.config/cava/caway/caway",
+    "return-type": "json",
+
+},
+
+
