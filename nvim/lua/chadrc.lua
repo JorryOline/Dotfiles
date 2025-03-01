@@ -48,10 +48,20 @@ M.ui = {
          enabled = true,
          lazyload = false
      },
-       statusline = {
-          theme = "minimal",
-          separator_style = "default"
-  }
+  --      statusline = {
+  --         theme = "minimal",
+  --         separator_style = "round",
+  --         modules = {
+  --           archlinux = fuction()
+  --               return "hi"
+  --           end,
+  --   }
+  -- },
+  statusline = {
+     theme = "minimal",
+     separator_style = "round",
+   },
+
 }
 
 return M
