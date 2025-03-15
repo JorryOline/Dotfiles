@@ -1,5 +1,6 @@
 # My Hyprland Configuration!
 ![image](Preview.png)
+![image](Preview_2.png)
 ***Based On Archlinux***
 ## Requirements
 ### 1.hyprland 0.46.1 
