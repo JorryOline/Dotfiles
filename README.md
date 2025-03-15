@@ -5,7 +5,7 @@
 ## Requirements
 ### 1.hyprland 0.46.1 
 You can install it by visiting the [Hyprland](https://hyprland.org)
-Every single Configuration here can be found.
+Every single Configuration can be found here.
 No more modules i added.
 ### 2.mpvpaper
 It's a video wallpaper engine that could be used in wayland for free.
