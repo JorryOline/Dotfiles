@@ -33,6 +33,7 @@ count_selected = { fg = "#1e1e2e", bg = "#f9e2af" }
 border_symbol = "│"
 border_style  = { fg = "#F3Abb6" }
 
+
 # : }}}
 
 
@@ -86,7 +87,7 @@ inactive = {}
 # : Input {{{
 
 [input]
-border   = { fg = "#89b4fa" }
+border   = { fg = "#F3ABB6" }
 title    = {}
 value    = {}
 selected = { reversed = true }
