@@ -96,7 +96,7 @@ tooltip label {
   color: rgb(245, 194, 231);
 }
 #clock {
-  color: rgb(217, 224, 238);
+  color: #D2C3D5;
 }
 #idle_inhibitor {
   color: rgb(221, 182, 242);
@@ -114,7 +114,7 @@ tooltip label {
   color: rgb(245, 224, 220);
 }
 #custom-cava {
-  color: #F7F7F7
+  color: #D2C3D5
 }
 #network {
   color: #abe9b3;
@@ -214,8 +214,9 @@ tooltip label {
 #custom-music.Stopped {
   background: #161925;
 }
-#custom-waylrc {
-  font-family: "Maple Mono SC NF"
+#custom-waylrc { 
+  font-family: "Maple Mono SC NF";
+  color: #D2B3D5;
 }
 
 #custom-cycle_wall {

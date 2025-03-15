@@ -1,0 +1,11 @@
+[flavor]
+dark = "catppuccin-mocha"
+
+[icon]
+prepend_conds = [
+]
+
+[general]
+font_family = "Maple Mono SC NF"
+font_size = 14
+
