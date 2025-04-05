@@ -92,13 +92,13 @@
     "format-charging" : "󰂄 {capacity}%",
     "tooltip" : false,
   },
-  "clock" : {
-    "interval" : 1,
-    "on-click" : "~/.config/hypr/scripts/waybar/cycle.sh",
-    "format" : "<b>{:%m月%d日 %H:%M %A}</b>",
-    "tooltip" : true,
-    "tooltip-format" : "<big>{:%Y年%b%d日}</big>\n<tt><small>{calendar}</small></tt>",
-  },
+
+    "clock": {
+        "format": "<span color='#bf616a'> </span>{:%a %b %d}",
+        "format-alt": "<span color='#bf616a'> </span>{:%I:%M %p}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
   "memory" : {
     "interval" : 1,
     "format": "󰍛 {}%",
