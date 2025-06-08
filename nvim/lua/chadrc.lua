@@ -8,7 +8,7 @@ local M = {}
 M.base46 = {
   theme_toggle = {"material-deep-ocean", "catppuccin"},
 	theme = "catppuccin",
-  --transparency = 'false',
+  transparency = 'false',
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -59,7 +59,7 @@ M.ui = {
   -- },
   statusline = {
      theme = "minimal",
-     separator_style = "round",
+     separator_style = "",
    },
 
 }
