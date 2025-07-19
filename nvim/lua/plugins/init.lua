@@ -49,8 +49,8 @@ return {
             level = "TRACE",
         })
         local getTime = os.date("%X");
-        local output = vim.fn.system("fortune")
-        vim.notify = notify
+      --   local output = vim.fn.system("~/main.ps1")
+      --   vim.notify = notify
       --   notify(output, "info", {
       --     title = "每日箴言 🎲",
       --     on_open = nil,
@@ -58,7 +58,7 @@ return {
       --     timeout = "5000",
       --     fps = 144,
       -- })
-        notify("🥳💖欢迎访问http://jorryoline.github.io喵❤️😘💕",nil,{
+        notify("🥳💖欢迎访问jorryoline.github.io喵❤️😘💕",nil,{
 	          on_open = nil,
 	          render = 'minimal',
 	          stages = 'slide',
@@ -174,7 +174,7 @@ return {
 {
     "nvim-zh/colorful-winsep.nvim",
     lazy = true,
-    event = "WinNew",
+    event = "VeryLazy",
     config = function()
         require("colorful-winsep").setup({
         hi = {
@@ -243,6 +243,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
@@ -251,14 +252,61 @@ return {
         fps = 200;
       },
     dashboard = {
-        enabled = false,
+      preset = {
+    -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+    ---@type fun(cmd:string, opts:table)|nil
+    pick = nil,
+    -- Used by the `keys` section to show keymaps.
+    -- Set your custom keymaps here.
+    -- When using a function, the `items` argument are the default keymaps.
+    ---@type snacks.dashboard.Item[]
+    keys = {
+      { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+      { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+      { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+      { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+      { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+      { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+      { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+    },
+      header = [[
+ █████╗ ███████╗██╗   ██╗██╗  ██╗ █████╗ 
+██╔══██╗██╔════╝██║   ██║██║ ██╔╝██╔══██╗
+███████║███████╗██║   ██║█████╔╝ ███████║
+██╔══██║╚════██║██║   ██║██╔═██╗ ██╔══██║
+██║  ██║███████║╚██████╔╝██║  ██╗██║  ██║
+╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+      ]]
+    -- Used by the `header` section
+--     header = 
+-- [[
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣡⣾⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣟⠻⣿⣿⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⡿⢫⣷⣿⣿⣿⣿⣿⣿⣿⣾⣯⣿⡿⢧⡚⢷⣌⣽⣿⣿⣿⣿⣿⣶⡌⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣮⣇⣘⠿⢹⣿⣿⣿⣿⣿⣻⢿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⠀⢸⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣻⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⡇⠀⣬⠏⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣷⣼⣿⣿⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⠀⠈⠁⠀⣿⡇⠘⡟⣿⣿⣿⣿⣿⣿⣿⣿⡏⠿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣇⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⡏⠀⠀⠐⠀⢻⣇⠀⠀⠹⣿⣿⣿⣿⣿⣿⣩⡶⠼⠟⠻⠞⣿⡈⠻⣟⢻⣿⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢿⠀⡆⠀⠘⢿⢻⡿⣿⣧⣷⢣⣶⡃⢀⣾⡆⡋⣧⠙⢿⣿⣿⣟⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⡥⠂⡐⠀⠁⠑⣾⣿⣿⣾⣿⣿⣿⡿⣷⣷⣿⣧⣾⣿⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⡿⣿⣍⡴⠆⠀⠀⠀⠀⠀⠀⠀⠀⣼⣄⣀⣷⡄⣙⢿⣿⣿⣿⣿⣯⣶⣿⣿⢟⣾⣿⣿⢡⣿⣿⣿⣿⣿
+--   ⣿⡏⣾⣿⣿⣿⣷⣦⠀⠀⠀⢀⡀⠀⠀⠠⣭⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣡⣾⣿⣿⢏⣾⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⣿⣿⣿⣿⣿⡴⠀⠀⠀⠀⠀⠠⠀⠰⣿⣿⣿⣷⣿⠿⠿⣿⣿⣭⡶⣫⠔⢻⢿⢇⣾⣿⣿⣿⣿⣿⣿
+--   ⣿⣿⣿⡿⢫⣽⠟⣋⠀⠀⠀⠀⣶⣦⠀⠀⠀⠈⠻⣿⣿⣿⣾⣿⣿⣿⣿⡿⣣⣿⣿⢸⣾⣿⣿⣿⣿⣿⣿⣿
+--   ⡿⠛⣹⣶⣶⣶⣾⣿⣷⣦⣤⣤⣀⣀⠀⠀⠀⠀⠀⠀⠉⠛⠻⢿⣿⡿⠫⠾⠿⠋⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+--   ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⡆⣠⢀⣴⣏⡀⠀⠀⠀⠉⠀⠀⢀⣠⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+--   ⠿⠛⠛⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣯⣟⠷⢷⣿⡿⠋⠀⠀⠀⠀⣵⡀⢠⡿⠋⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⢿⣿⣿⠂⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿
+-- ]],
+  },
+        enabled = true,
         sections = {
     {
-      section = "terminal",
-      -- cmd = "chafa ~/asuka.png --size 60x17 --stretch; sleep .1",
-      cmd = "chafa ~/wallpaper/Sunset.jpg --format symbols --symbols vhalf  --size 60x17 --stretch; sleep .1",
-      height = 17,
-      padding = 1,
+      section = "header",
+
     },
     {
       pane = 2,
@@ -290,10 +338,10 @@ return {
     config = true,
 },
 
-  {
-    'jayli/nvim-ai-coding',
-    lazy = false,
-  },
+  -- {
+  --   'jayli/nvim-ai-coding',
+  --   lazy = false,
+  -- },
   -- {
   --   "yetone/avante.nvim",
   --   event = "VeryLazy",

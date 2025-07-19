@@ -53,12 +53,12 @@ local alpha = function()
   return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
 end
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-vim.g.neovide_transparency = 0.9
+vim.g.neovide_opacity = 0.9
 vim.g.transparency = 1.0
 --vim.g.neovide_background_color = "#0f1117" .. alpha()
 
     --vim.o.guifont = "JetBrainsMono Nerd Font Mono Bold:h14" -- text below applies for VimScript
-vim.o.guifont = "Maple Mono SC NF" -- text below applies for VimScript
+vim.o.guifont = "CaskaydiaCove Nerd Font" -- text below applies for VimScript
 vim.g.neovide_fullscreen = false
 end
 -- 定义显示 fortune 的函数
@@ -89,3 +89,9 @@ end
 
 -- 映射到 <leader>ff
 vim.keymap.set("n", "<leader>ff", show_fortune_floating, { desc = "浮动窗口显示 fortune" })
+-- 在 init.lua 或 custom/init.lua 中添加
+vim.filetype.add({
+  extension = {
+    ux = "html",
+  },
+})

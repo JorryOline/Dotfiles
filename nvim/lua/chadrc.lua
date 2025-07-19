@@ -6,9 +6,9 @@
 local M = {}
 
 M.base46 = {
-  theme_toggle = {"material-deep-ocean", "catppuccin"},
+  theme_toggle = {"gruvchad", "catppuccin"},
 	theme = "catppuccin",
-  transparency = 'false',
+  transparency = 'true',
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -17,7 +17,7 @@ M.base46 = {
 }
 
 M.nvdash = { 
-  load_on_startup = true,
+  load_on_startup = false,
   header = {
     [[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
     [[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
@@ -46,7 +46,7 @@ M.nvdash = {
 M.ui = {
       tabufline = {
          enabled = true,
-         lazyload = false
+         lazyload = true
      },
   --      statusline = {
   --         theme = "minimal",
