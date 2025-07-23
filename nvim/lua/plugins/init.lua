@@ -337,6 +337,20 @@ return {
     },
     config = true,
 },
+{ "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+ {"mfussenegger/nvim-dap"},
+--{"nvim-dap-virtual-text"},
+  { "williamboman/mason.nvim"},
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    lazy = false,
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+},
 
   -- {
   --   'jayli/nvim-ai-coding',
